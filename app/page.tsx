@@ -1,9 +1,9 @@
 import { AgentGrid } from "@/components/dashboard/agent-grid";
 import { ApiUsagePanel } from "@/components/dashboard/api-usage";
-import { LogFeed } from "@/components/dashboard/log-feed";
 import { ProcessList } from "@/components/dashboard/process-list";
 import { SummaryCard } from "@/components/dashboard/summary-card";
 import { TaskBoard } from "@/components/kanban/task-board";
+import { LiveActivityFeed } from "@/components/live/live-activity-feed";
 import { Button } from "@/components/ui/button";
 import { mockTasks } from "@/lib/tasks";
 import { getMissionControlSnapshot } from "@/server/status";
@@ -51,9 +51,9 @@ export default async function Home() {
           <ApiUsagePanel usage={snapshot.apiUsage} />
         </section>
 
-        <section className="grid gap-6 lg:grid-cols-2">
+        <section className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
           <ProcessList processes={snapshot.processes} />
-          <LogFeed logs={snapshot.logs} />
+          <LiveActivityFeed />
         </section>
 
         <section className="space-y-4">
