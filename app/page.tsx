@@ -3,7 +3,9 @@ import { ApiUsagePanel } from "@/components/dashboard/api-usage";
 import { LogFeed } from "@/components/dashboard/log-feed";
 import { ProcessList } from "@/components/dashboard/process-list";
 import { SummaryCard } from "@/components/dashboard/summary-card";
+import { TaskBoard } from "@/components/kanban/task-board";
 import { Button } from "@/components/ui/button";
+import { mockTasks } from "@/lib/tasks";
 import { getMissionControlSnapshot } from "@/server/status";
 import { ArrowUpRight } from "lucide-react";
 
@@ -52,6 +54,17 @@ export default async function Home() {
         <section className="grid gap-6 lg:grid-cols-2">
           <ProcessList processes={snapshot.processes} />
           <LogFeed logs={snapshot.logs} />
+        </section>
+
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">Task board</h2>
+              <p className="text-sm text-slate-400">Drag + drop mock tasks across columns.</p>
+            </div>
+            <span className="text-xs uppercase tracking-[0.3em] text-slate-600">Kanban</span>
+          </div>
+          <TaskBoard tasks={mockTasks} />
         </section>
       </div>
     </div>
