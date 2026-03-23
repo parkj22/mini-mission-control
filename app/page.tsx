@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { mockTasks } from "@/lib/tasks";
 import { getMissionControlSnapshot } from "@/server/status";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default async function Home() {
   const snapshot = await getMissionControlSnapshot();
@@ -24,11 +25,14 @@ export default async function Home() {
             </p>
           </div>
           <div className="flex gap-3">
-            <Button asChild variant="outline" className="border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800">
-              <a href="/api/status" target="_blank" rel="noreferrer">
-                Raw API snapshot
-              </a>
-            </Button>
+            <Link
+              href="/api/status"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-slate-800"
+            >
+              Raw API snapshot
+            </Link>
             <Button className="bg-emerald-500 text-slate-950 hover:bg-emerald-400">
               Trigger sync
               <ArrowUpRight className="ml-2 h-4 w-4" />
